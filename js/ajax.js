@@ -13,12 +13,7 @@ $(function() {
   }
 
   //crare the template for list item
-  var orderTemplate =""+
-  "<li>"+
-  "<p><strong>Name:</strong> {{name}}</p>" +
-  "<p><strong>Drink:</strong> {{drink}}</p>" +
-  "<button data-id='{{id}}' class='remove'>x</button>" +
-  "</li>";
+  var orderTemplate = $('#order-template').html();
 
 
   //call the ajax to get all existing orders
@@ -67,6 +62,44 @@ $(function() {
       url: 'http://rest.learncode.academy/api/learncode/friends/' + $(this).attr('data-id'),
       success: function(){
         $(this).remove();
+      }
+    });
+  });
+
+  //cause edit
+  $orders.delegate('.edit-order', 'click', function(){
+    var $li = $(this).closest('li');
+    $li.find('input.name').val($li.find('span.name').html());
+    $li.find('input.drink').val($li.find('span.drink').html());
+    $li.addClass('edit');
+  });
+
+  //cancel edit
+  $orders.delegate('.cancel-order', 'click', function(){
+    var $li = $(this).closest('li');
+    $li.removeClass('edit');
+  });
+
+  //save an edit
+  $orders.delegate('.save-edit', 'click', function(){
+    var $li = $(this).closest('li');
+    //create post data
+    var order = {
+      name: $li.find('input.name').val(),
+      drink: $li.find('input.drink').val()
+    }
+
+    $.ajax({
+      type: 'PUT',
+      url: 'http://rest.learncode.academy/api/learncode/friends/' + $li.attr('data-id'),
+      data: order,
+      success: function(neworder){
+        $li.find('span.name').html(order.name);
+        $li.find('span.drink').html(order.drink);
+        $li.removeClass('edit');
+      },
+      error: function(){
+        alert('error updating order');
       }
     });
   });

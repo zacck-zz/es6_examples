@@ -91,9 +91,22 @@ body {
   width: 720px;
   height: 400px;
 }
-li {
-  background-color: #CCD1D1;
+ul li {
+  background-color: #efefef;
   margin-top: 5px;
   list-style-type: none;
   width: 500px;
+}
+
+/*Styling for edit items*/
+ul li .edit {
+  display: none;
+}
+
+ul li.edit .edit {
+  display: initial;
+}
+
+ul li.edit .noedit {
+  display: none;
 }

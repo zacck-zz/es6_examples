@@ -14,10 +14,25 @@
     <div class="container">
       <h1>Jquery Ajax Sample</h1>
       <h2> Coffee Order </h2>
-      <ul id="orders">
-
-      </ul>
-
+      <ul id="orders"></ul>
+        <template id="order-template">
+          <li data-id="{{id}}">
+            <p>
+              <strong>Name:</strong>
+              <span class="noedit name">{{name}}</span>
+              <input class="edit name"/>
+            </p>
+            <p>
+              <strong>Drink:</strong>
+              <span class="noedit drink">{{drink}}</span>
+              <input class="edit drink"/>
+            </p>
+            <button data-id='{{id}}' class='remove'>x</button>
+            <button class="edit-order noedit">EDIT</button>
+            <button class="cancel-edit edit">CANCEL</button>
+            <button class="save-edit edit">SAVE</button>
+          </li>
+        </template>
       <h4>Add a Coffee Order</h4>
       <p>name: <input type="text" id="name"></p>
       <p>drink: <input type="text" id="drink"</p>
