@@ -1,0 +1,33 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.top-container {
+  padding: 100px;
+  background-color: #A6ACAF;
+}
+
+.panel {
+  border: 1px solid #000;
+  border-radius: 0px;
+  margin: 5px;
+}
+
+.row {
+  margin-top: 20px;
+}
+
+.panel-title {
+  background-color: #2E86C1;
+  border-bottom: 1px solid #000;
+}
+
+.bottom-container {
+  margin: auto;
+}
+
+.top-title {
+  font-weight: 700;
+  font-size: 25px;
+  margin-top: 20px;
+  text-align: center;
+}
