@@ -8,9 +8,17 @@ $(function() {
   //refactor
   function addOrder(curritem)
   {
-    $orders.append('<li>name: '+ curritem.name+', drink: '+curritem.drink +'</li>');
+    $orders.append(Mustache.render(orderTemplate, curritem));
 
   }
+
+  //crare the template for list item
+  var orderTemplate =""+
+  "<li>"+
+  "<p><strong>Name:</strong> {{name}}</p>" +
+  "<p><strong>Drink:</strong> {{drink}}</p>" +
+  "<button data-id='{{id}}' class='remove'>x</button>" +
+  "</li>";
 
 
   //call the ajax to get all existing orders
@@ -48,6 +56,19 @@ $(function() {
     });
 
 
+  });
+
+  //handle the deletion of items
+  $orders.delegate('.remove','click', function(){
+    //parent
+    var $li = $(this).closest('li');
+    $.ajax({
+      type: 'DELETE',
+      url: 'http://rest.learncode.academy/api/learncode/friends/' + $(this).attr('data-id'),
+      success: function(){
+        $(this).remove();
+      }
+    });
   });
 
 });

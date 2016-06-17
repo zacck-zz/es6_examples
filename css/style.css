@@ -91,3 +91,9 @@ body {
   width: 720px;
   height: 400px;
 }
+li {
+  background-color: #CCD1D1;
+  margin-top: 5px;
+  list-style-type: none;
+  width: 500px;
+}
