@@ -12,7 +12,7 @@ $(function() {
     fontWeight: 'bold'
   });
 
-  //Event Binding
+  /*Event Binding
   $('#btnevent1').html('my button 1');
 
   $('#panelevent1').html('mypanel <strong> my bold</strong>');
@@ -22,27 +22,21 @@ $(function() {
     $('#panelevent1').fadeOut();
   });
 
-  $('#btnevent3').on('mouseover', function(){
-    $('#panelevent3').fadeOut();
-  });
+
   $('#btnevent4').on('mouseover', function(){
     $('#panelevent4').fadeOut();
   });
+  */
 
-  //event from one element to another
-  $('#btnevent2').on('click', function(){
-    $('#panelevent2 .panel-content').html('my new panel content');
-  });
-  $('#btnevent1').on('click', function(){
-    $('#panelevent1').fadeIn();
-  });
-  $('#btnevent3').on('click', function(){
-    $('#panelevent3').fadeIn();
-  });
-  $('#btnevent4').on('click', function(){
-    $('#panelevent4').fadeIn();
-  });
+  var content = "My new panel content";
 
+  //target by class
+  $('.panel-button').on('click', function(){
+   var panelId = $(this).attr('data-panelid');
+   $('#'+panelId).toggle();
+   $('#'+panelId+ ' .panel-content').html(content);
+
+  });
 
 
 
